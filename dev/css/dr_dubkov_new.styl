@@ -1,0 +1,423 @@
+/*** Settings ***/
+@import "nib"
+@import "../lib/css/css"
+
+global-reset();
+reset-html5();
+form-reset();
+b
+strong
+i
+em
+	font-style normal
+	font-weight normal
+
+$transitionAnimation = cubic-bezier(0.250, 0.460, 0.450, 0.940)
+$colorDark = #4a4a4a
+$colorLight = #f7f7f7
+$colorSend = #b59e4f
+
+/* fonts */
+@font-face
+	font-family "ProximaNovaBlack"
+	src url("../fonts/ProximaNova-Black.woff") format("woff")
+/* //fonts */
+
+html
+	height 100%
+	minheight 100%
+
+body
+	position relative
+	width 100%
+	height 100%
+	min-height 100vh
+	line-height 1
+	cursor default
+	font-family "ProximaNovaRegular"
+	color $colorDark
+/*** //Settings ***/
+
+/*** main style ***/
+
+.page
+	display flex
+	justify-content space-between
+	align-items flex-start
+	width 100%
+	height 100%
+
+	min-height 100%
+
+	margin 0 auto
+
+.page-inner
+	position relative
+	display block
+	margin 0 auto
+	padding 0 20px
+	box-sizing border-box
+
+	&--w1
+		max-width 1125px
+
+.page-header
+	position fixed
+	top 0
+	left 0
+	bottom 0
+	display block
+	width 120px
+	height 100%
+
+	background $colorLight
+
+	transform translateX(-100%)
+	transition transform 1.5s $transitionAnimation
+
+	.page-header-inner
+		position relative
+		width 100%
+		height 100%
+
+		text-align center
+
+		.header-title
+			position absolute
+			top 40px
+			right 50%
+			display inline-block
+
+			transform rotate(-90deg)
+			transform-origin 100% 50%
+
+			white-space nowrap
+
+		.header-burger-holder
+			position absolute
+			top 50%
+			left 50%
+
+			display inline-block
+			width 35px
+			height 20px
+
+			margin-left -17.5px
+			margin-top -10px
+
+			cursor pointer
+
+			.header-burger
+				position absolute
+				top 50%
+				display block
+				width 100%
+				height 2px
+				background #000
+				transform translateY(-50%)
+				transition width 0.3s $transitionAnimation, opacity 0.3s $transitionAnimation
+
+			&:before
+			&:after
+				content ""
+				position absolute
+				top 0
+				left 0
+				display block
+				width 100%
+				height 2px
+				background #000
+				transition transform 0.3s $transitionAnimation
+				transition-duration 0.6s
+
+			&:after
+				top initial
+				bottom 0
+				transition-duration 0.8s
+
+		.header-record
+			position absolute
+			bottom 50px
+			right 50%
+			display inline-block
+
+			transform rotate(-90deg)
+			transform-origin 49% -260%
+
+			white-space nowrap
+
+	&.active
+		transform translateX(0)
+
+.page-content
+	position relative
+	display block
+	width 100%
+
+	padding-left 120px
+	box-sizing border-box
+
+	transition transform 0.8s $transitionAnimation
+
+	overflow hidden
+
+	.page-content-holder
+		opacity 0
+		transform scale(0.95)
+		transition transform 1s $transitionAnimation, opacity 1s $transitionAnimation
+
+	&:after
+		content ""
+		position absolute
+		top 0
+		right 0
+		left 0
+		bottom 0
+
+		display block
+		width 100%
+		height 100%
+
+		background $colorLight
+
+		transition transform 1s $transitionAnimation
+
+		z-index 10
+
+	&.active
+		&:after
+			transform translateX(100%)
+
+		.page-content-holder
+			opacity 1
+			transition-delay 1s
+			transform scale(1)
+
+	.page-mobile
+		position absolute
+		top 40px
+		right 40px
+		font-size 22px
+
+/** button and link **/
+
+.link
+	text-decoration none
+	color #000
+
+.link-bold
+	font-weight bold
+
+.link-send
+	color $colorSend
+
+.link-dark
+	color $colorDark
+
+.link-opacity
+	transition opacity 0.3s $transitionAnimation
+	&:hover
+		opacity 0.5
+
+.link-dark--bottom
+	display inline
+	box-shadow inset 0 -1px #4a4a4a, inset 0 0 #4a4a4a
+	transition box-shadow 0.3s $transitionAnimation
+
+	&:hover
+		box-shadow inset 0 -1px transparent, inset 0 0 transparent
+
+.link-dark--bottom-reverse
+	display inline
+	box-shadow inset 0 -2.9555px transparent, inset 0 -1px transparent
+	transition box-shadow 0.3s $transitionAnimation
+
+	&:hover
+		box-shadow inset 0 -2.9555px transparent, inset 0 -1px $colorDark
+
+.link-dark--send
+	display inline
+	box-shadow inset 0 -2.9555px $colorSend, inset 0 -4px $colorSend
+	transition box-shadow 0.3s $transitionAnimation
+
+	&:hover
+		box-shadow inset 0 -2.9555px $colorSend, inset 0 -4px transparent
+
+.link-dark--send-reverse
+	display inline
+	box-shadow inset 0 -2.9555px transparent, inset 0 -1px transparent
+	transition box-shadow 0.3s $transitionAnimation
+
+	&:hover
+		box-shadow inset 0 -2.9555px transparent, inset 0 -1px $colorSend
+
+.button
+	position relative
+	display block
+	padding 5px
+	box-sizing border-box
+	text-align center
+	border 1px solid #000
+
+.button-black
+	color $colorgreen
+	border 1px solid $colorgreen
+
+	transition color 0.3s $transitionAnimation, border-color 0.3s $transitionAnimation
+
+	overflow hidden
+
+	&:before
+		content ""
+		position absolute
+		top 0
+		left 0
+		bottom 0
+		right 0
+
+		transform translateY(100%)
+		background $colorgreen
+		transition transform 0.5s $transitionAnimation
+
+		z-index -10
+
+	&:hover
+		color #fff
+		border-color $colorgreen
+
+		&:before
+			transform translateY(0)
+
+/** form **/
+.form
+	max-width 590px
+
+.form-title
+	width 100%
+	margin-bottom 35px
+
+.form-row
+	width 100%
+	margin-bottom 20px
+
+.form-holder
+	position relative
+	width 100%
+
+.form-item
+	width 100%
+	padding: 18px 20px
+	box-sizing border-box
+
+	border-bottom 1px solid #959696
+
+	background-color $colorgrayfone
+
+	font-size 20px
+
+	cursor pointer
+	color #000
+
+	transition background 0.3s $transitionAnimation
+/** //form **/
+
+/** general **/
+.page-text
+	h1
+		font-size 48px
+		color $colorDark
+
+	p
+		font-size 22px
+		line-height 36px
+		margin-bottom 40px
+
+.section
+	display flex
+	justify-content space-between
+	align-items flex-start
+
+	margin-bottom 110px
+
+	&--height
+		height 100%
+		min-height 100vh
+
+		.section-item
+			height 100%
+			min-height 100vh
+
+		.section-holder
+			height 100%
+			min-height 100vh
+
+
+			.section-img
+				position absolute
+				top 0
+				right 0
+				left 0
+				bottom 0
+				display block
+				width 100%
+				height 100%
+				object-fit cover
+
+	.section-item
+		position relative
+
+		&--w35
+			width 35%
+
+		&--w60
+			width 60%
+
+	.section-img
+		display block
+		width 100%
+
+	.section-holder
+		position relative
+		display block
+
+	.section-title
+		text-align right
+
+		.section-title-item
+			display inline-block
+			margin-top 8px
+			line-height 25px
+			transform rotate(-90deg)
+			transform-origin: 83% 50%
+
+	.page-text
+		h1
+			position absolute
+			top 35%
+			left 0
+			display block
+			width 100%
+			max-width 580px
+			line-height 68px
+
+		p
+			max-width 690px
+			width 100%
+
+/** //general **/
+
+/** intro **/
+.intro
+	.section-item
+		position relative
+
+	.logo
+		position absolute
+		top 15%
+		left 0
+		display block
+		width 100%
+		height 100px
+		max-width 230px
+
+/** //intro **/
