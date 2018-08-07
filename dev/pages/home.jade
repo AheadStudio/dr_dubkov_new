@@ -1,19 +1,110 @@
 extends ../templates/base
 
 block content
-    div(class="intro section section--height")
+    div(class="section section--height intro")
         div(class="section-item section-item--w35")
             div(class="section-holder")
                 img(src="../dummy/1.jpg", class="section-img")
         div(class="section-item section-item--w60")
             div(class="page-text")
-                div(class="logo", style="background: #8bfffc")
+                div(class="logo")
+                    include ../../prod/svg/logo.svg
                 h1 Авторская клиника эстетической стоматологии доктора Александра Дубкова
+                a(href="#next", class="link arrow-scroll")
+                    include ../../prod/svg/black_arrow_bottom.svg
+                    
     div(class="section")
-        div(class="section-item section-item--w35")
+        div(class="section-item section-item--w25 section-item--left")
             div(class="section-title")
-                a(href="#", class="link link-dark link-dark--bottom section-title-item") О клинике
-        div(class="section-item section-item--w60")
+                a(href="#", class="link link-dark section-title-item") О клинике
+        div(class="section-item section-item--w50 section-item--right")
             div(class="page-text")
-                p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et earum quisquam, praesentium itaque quidem saepe dicta.
-                p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et earum quisquam, praesentium itaque quidem saepe dicta.
+                p Introducing Brontide, a naturally sourced butylene glycol designed for the personal care industry.
+                p Using a safe and sustainable process, we've created a plant-based butylene glycol that's better for good.
+    
+    div(class="section section--height intro-video")
+        div(class="intro-video-container")
+            iframe(id="video-home" frameborder="0", height="100%", width="100%", src="https://www.youtube.com/embed/i93Z7zljQ7I?rel=0&amp;controls=0&amp;showinfo=0", allow="autoplay; encrypted-media", allowfullscreen)
+            div(style="background-image: url(/dummy/home.jpg)", class="fake-preview", data-video)
+                button(id="play-button" class="fake-preview-icon")
+                    include ../../prod/svg/play.svg 
+                    
+    div(class="section")
+        div(class="section-item section-item--w25 section-item--left")
+            div(class="section-title")
+                a(href="#", class="link link-dark section-title-item") Услуги
+        div(class="section-item section-item--w50 section-item--right")
+            div(class="page-text")
+                p Introducing Brontide, a naturally sourced butylene glycol designed for the personal care industry.
+                p Using a safe and sustainable process, we've created a plant-based butylene glycol that's better for good.
+                    
+    div(class="section")
+        div(class="section-container-image")
+            div(class="section-container-image-item section-container-image-item--left section-container-image-item--w50")
+                img(src="../dummy/home3.jpg", alt="")
+            div(class="section-container-image-item section-container-image-item--right section-container-image-item--w40")
+                img(src="../dummy/home2.jpg", alt="")
+                
+    div(class="section")
+        div(class="section-item section-item--w25 section-item--left")
+        div(class="section-item section-item--w50 section-item--right")
+            div(class="page-text")
+                p Introducing Brontide, a naturally sourced butylene glycol designed for the personal care industry.
+                p Using a safe and sustainable process, we've created a plant-based butylene glycol that's better for good.
+                
+    div(class="section intro-quote")
+        div(class="section-item section-item--w60")
+            div(class="section-holder")
+                img(src="../dummy/home4.jpg", class="section-img")
+        div(class="section-item section-item--w25 section-item--right")
+            div(class="intro-quote-text")
+                div(class="page-text")
+                    p «Либо ты профессионал, либо иди учись»
+                    p Доктор Дубков
+    
+    div(class="section intro-briefcases")
+        div(class="section-item section-item--w25 section-item--left")
+            div(class="section-title")
+                a(href="#", class="link link-dark section-title-item") Кейсы
+        div(class="section-item section-item--w50 section-item--right")
+            div(class="briefcases-container")
+                div(class="briefcases-item")
+                    div(class="briefcases-result") Результат работы 
+                        a(href="#", class="link link-send link-send--bottom-reverse") До 
+                        span(class="briefcases-dilimiter") / 
+                        a(href="#", class="link link-send link-send--bottom-reverse") После 
+                    div(class="briefcases-theme") Комплексная реабилитация пациентов c отсусвием почти всех зубов. Опора на имплантантах
+                div(class="briefcases-item")
+                    div(class="briefcases-result") Результат работы 
+                        a(href="#", class="link link-send link-send--bottom-reverse") До 
+                        span(class="briefcases-dilimiter") / 
+                        a(href="#", class="link link-send link-send--bottom-reverse") После 
+                    div(class="briefcases-theme") Повторное протезирование. Ортопедическая конструкция e-max c опорой на имплантантах
+                    
+    div(class="section")
+        div(class="section-container-image")
+            div(class="section-container-image-item section-container-image-item--left section-container-image-item--w40")
+                img(src="../dummy/home5.jpg", alt="")
+            div(class="section-container-image-item section-container-image-item--right section-container-image-item--w50")
+                img(src="../dummy/home6.jpg", alt="")
+
+    div(class="section")
+        div(class="section-item section-item--w50 section-item--left")
+            div(class="page-text")
+                p Introducing Brontide, a naturally sourced butylene glycol designed for the personal care industry.
+
+    div(class="section intro-instagram")
+        div(class="section-item section-item--left section-item--right")
+            div(class="instagram-container")
+                div(class="instagram-title") Следуйте за нами
+                a(href="#", class="link link-dark link-dark--color instagram-link") @dr.dubkov
+                div(class="instagram-container-list")
+                    a(href="#", class="instagram-container-item")
+                        img(src="../dummy/home7.jpg",)
+                    a(href="#", class="instagram-container-item")
+                        img(src="../dummy/home8.jpg",)
+                    a(href="#", class="instagram-container-item")
+                        img(src="../dummy/home9.jpg",)
+                    a(href="#", class="instagram-container-item")
+                        img(src="../dummy/home10.jpg",)
+                    

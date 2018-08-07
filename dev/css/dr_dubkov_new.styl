@@ -19,47 +19,62 @@ $colorSend = #b59e4f
 
 /* fonts */
 @font-face
-	font-family "ProximaNovaBlack"
-	src url("../fonts/ProximaNova-Black.woff") format("woff")
+	font-family "Circe"
+	src url("../fonts/Circe.woff") format("woff")
+
+@font-face
+	font-family "ProximaNovaRegular"
+	src url("../fonts/ProximaNova-Regular.woff") format("woff")
+
+@font-face
+	font-family "ProximaNovaBold"
+	src url("../fonts/ProximaNova-Bold.woff") format("woff")
+
+@font-face
+	font-family "ProximaNovaLight"
+	src url("../fonts/ProximaNova-Light.woff") format("woff")
+
+@font-face
+	font-family "ProximaNovaSemibold"
+	src url("../fonts/ProximaNova-Semibold.woff") format("woff")
 /* //fonts */
 
 html
 	height 100%
-	minheight 100%
 
 body
 	position relative
 	width 100%
 	height 100%
-	min-height 100vh
 	line-height 1
 	cursor default
 	font-family "ProximaNovaRegular"
 	color $colorDark
+
 /*** //Settings ***/
 
 /*** main style ***/
 
 .page
+	position relative
 	display flex
 	justify-content space-between
 	align-items flex-start
 	width 100%
 	height 100%
 
-	min-height 100%
-
 	margin 0 auto
+
+	overflow hidden
 
 .page-inner
 	position relative
 	display block
 	margin 0 auto
-	padding 0 20px
 	box-sizing border-box
 
 	&--w1
-		max-width 1125px
+		max-width 1080px
 
 .page-header
 	position fixed
@@ -75,6 +90,8 @@ body
 	transform translateX(-100%)
 	transition transform 1.5s $transitionAnimation
 
+	z-index 120
+
 	.page-header-inner
 		position relative
 		width 100%
@@ -85,13 +102,19 @@ body
 		.header-title
 			position absolute
 			top 40px
-			right 50%
+			right 40%
 			display inline-block
-
-			transform rotate(-90deg)
-			transform-origin 100% 50%
-
+			width 20px
 			white-space nowrap
+
+			.header-title-icon
+				display block
+				width 100%
+				height 100%
+
+				svg
+					display block
+					width 100%
 
 		.header-burger-holder
 			position absolute
@@ -142,9 +165,11 @@ body
 			display inline-block
 
 			transform rotate(-90deg)
-			transform-origin 49% -260%
+			transform-origin 52% -260%
 
 			white-space nowrap
+
+			font-size 16px
 
 	&.active
 		transform translateX(0)
@@ -153,16 +178,37 @@ body
 	position relative
 	display block
 	width 100%
+	height 100%
 
 	padding-left 120px
 	box-sizing border-box
 
 	transition transform 0.8s $transitionAnimation
 
-	overflow hidden
+	.page-content-block
+		height 100%
+		transition transform 1s $transitionAnimation, background 1s $transitionAnimation
+
+		&:after
+			content ""
+			position absolute
+			top 0
+			right 0
+			left 0
+			bottom 0
+
+			display block
+			width 100%
+			height 100%
+
+			transition background 2s $transitionAnimation
+
+			z-index -10
 
 	.page-content-holder
+		overflow-y scroll
 		opacity 0
+		height 100%
 		transform scale(0.95)
 		transition transform 1s $transitionAnimation, opacity 1s $transitionAnimation
 
@@ -180,13 +226,13 @@ body
 
 		background $colorLight
 
-		transition transform 1s $transitionAnimation
+		transition transform 2s $transitionAnimation
 
 		z-index 10
 
 	&.active
 		&:after
-			transform translateX(100%)
+			transform translateX(150%)
 
 		.page-content-holder
 			opacity 1
@@ -197,9 +243,132 @@ body
 		position absolute
 		top 40px
 		right 40px
+
 		font-size 22px
+		font-family "Circe"
 
 /** button and link **/
+
+.page-menu
+	position fixed
+	top 0
+	left 120px
+	bottom 0
+
+	width 50vw
+	height 100%
+
+	padding-left 120px
+	box-sizing border-box
+
+	background #fff
+
+	opacity 0
+
+	transform translate3d(-150%, 0, 0)
+
+	z-index 100
+
+	transition transform 1s $transitionAnimation, opacity 0.5s $transitionAnimation
+
+	.menu
+		position absolute
+		top 50%
+
+		display block
+		margin-bottom 30px
+
+		transform translateY(-50%)
+
+		.menu-item-holder
+			display block
+			margin-bottom 20px
+			font-size 32px
+
+			opacity 0
+			transition opacity 0.8s $transitionAnimation
+
+			&:last-child
+				margin-bottom 0
+
+	.page-menu-info
+		position absolute
+		bottom 50px
+
+		transform translateY(10px);
+		opacity 0
+		transition opacity 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
+
+		.page-menu-address
+			display block
+			margin-bottom 20px
+			font-size 16px
+
+		.page-menu-creators
+			font-family "ProximaNovaLight"
+			font-size 16px
+
+			.footer-creators-name
+				border-bottom 1px solid transparent
+				transition border-bottom-color 0.3s $transitionAnimation, color 0.3s $transitionAnimation
+
+			&:hover
+				.footer-creators-name
+					color $colorSend
+					border-bottom 1px solid $colorSend
+
+	.close-menu
+		position absolute
+		top 50px
+		right 100px
+
+		display block
+		width 30px
+		height 30px
+
+		opacity 0
+
+		svg
+			display block
+			width 100%
+			transition opacity 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
+
+			&:hover
+				transform rotate(-90deg)
+				opacity 0.5
+
+body.open-menu
+	.page-menu
+		opacity 1
+		transform translate3d(0, 0, 0)
+
+	.menu
+		.menu-item-holder
+			opacity 1
+			transition-delay 1s
+
+	.close-menu
+		opacity 1
+		transition-delay 1s
+
+	.page-menu-info
+		opacity 1
+		transition-delay 1s
+		transform translateY(0)
+
+	.page
+		overflow hidden
+
+	.page-content
+		transform translate3d(50vw, 0, 0)
+
+		.page-content-holder
+
+		.page-content-block
+			&:after
+				z-index 10
+				background rgba(#000000, 0.7)
+
 
 .link
 	text-decoration none
@@ -220,36 +389,115 @@ body
 		opacity 0.5
 
 .link-dark--bottom
+	position relative
 	display inline
-	box-shadow inset 0 -1px #4a4a4a, inset 0 0 #4a4a4a
-	transition box-shadow 0.3s $transitionAnimation
+
+	&:after
+		content ""
+		position absolute
+		top 100%
+		left 0
+		width 100%
+		height 1px
+		background $colorDark
+
+		opacity 1
+
+		transform translateY(0px)
+
+		transition transform 0.2s $transitionAnimation, opacity 0.2s $transitionAnimation
 
 	&:hover
-		box-shadow inset 0 -1px transparent, inset 0 0 transparent
+		&:after
+			opacity 0
+			transform translateY(5px)
 
 .link-dark--bottom-reverse
+	position relative
 	display inline
-	box-shadow inset 0 -2.9555px transparent, inset 0 -1px transparent
-	transition box-shadow 0.3s $transitionAnimation
+
+	&:after
+		content ""
+		position absolute
+		top 100%
+		left 0
+		width 100%
+		height 1px
+		background $colorDark
+
+		opacity 0
+
+		transform translateY(5px)
+
+		transition transform 0.2s $transitionAnimation, opacity 0.2s $transitionAnimation
 
 	&:hover
-		box-shadow inset 0 -2.9555px transparent, inset 0 -1px $colorDark
+		&:after
+			opacity 1
+			transform translateY(0px)
 
-.link-dark--send
+
+.link-send--bottom
+	position relative
 	display inline
-	box-shadow inset 0 -2.9555px $colorSend, inset 0 -4px $colorSend
-	transition box-shadow 0.3s $transitionAnimation
+
+	&:after
+		content ""
+		position absolute
+		top 100%
+		left 0
+		width 100%
+		height 1px
+		background $colorSend
+
+		opacity 1
+
+		transform translateY(0px)
+
+		transition transform 0.2s $transitionAnimation, opacity 0.2s $transitionAnimation
 
 	&:hover
-		box-shadow inset 0 -2.9555px $colorSend, inset 0 -4px transparent
+		&:after
+			opacity 0
+			transform translateY(5px)
 
-.link-dark--send-reverse
+
+.link-send--bottom-reverse
+	position relative
 	display inline
-	box-shadow inset 0 -2.9555px transparent, inset 0 -1px transparent
-	transition box-shadow 0.3s $transitionAnimation
+
+	&:after
+		content ""
+		position absolute
+		top 100%
+		left 0
+		width 100%
+		height 1px
+		background $colorSend
+
+		opacity 0
+
+		transform translateY(5px)
+
+		transition transform 0.2s $transitionAnimation, opacity 0.2s $transitionAnimation
 
 	&:hover
-		box-shadow inset 0 -2.9555px transparent, inset 0 -1px $colorSend
+		&:after
+			opacity 1
+			transform translateY(0px)
+
+.link-opacity
+	transition opacity 0.3s $transitionAnimation
+
+	&:hover
+		opacity 0.6px
+
+.link-dark--color
+	transition color 0.3s $transitionAnimation
+
+	&:hover
+		color $colorSend
+
 
 .button
 	position relative
@@ -324,7 +572,8 @@ body
 /** general **/
 .page-text
 	h1
-		font-size 48px
+		font-size 56px
+		line-height 64px
 		color $colorDark
 
 	p
@@ -332,11 +581,15 @@ body
 		line-height 36px
 		margin-bottom 40px
 
+		&:last-child
+			margin-bottom 0
+
 .section
 	display flex
 	justify-content space-between
 	align-items flex-start
 
+	width 100%
 	margin-bottom 110px
 
 	&--height
@@ -366,11 +619,44 @@ body
 	.section-item
 		position relative
 
+		&--w25
+			width 25%
+
+		&--w28
+			width 28%
+
+		&--w38
+			width 38%
+
 		&--w35
 			width 35%
 
+		&--w25
+			width 25%
+
+		&--w45
+			width 45%
+
+		&--w50
+			width 50%
+
 		&--w60
 			width 60%
+
+		&--w70
+			width 70%
+
+		&--w80
+			width 80%
+
+		&--w90
+			width 90%
+
+		&--left
+			margin-left 10%
+
+		&--right
+			margin-right 10%
 
 	.section-img
 		display block
@@ -387,8 +673,113 @@ body
 			display inline-block
 			margin-top 8px
 			line-height 25px
-			transform rotate(-90deg)
-			transform-origin: 83% 50%
+
+			writing-mode tb-rl
+			transform rotate(180deg)
+
+			border-left 1px solid $colorDark
+
+			transition border-left-color 0.3s $transitionAnimation
+
+			&:hover
+				border-left-color transparent
+
+	&.page-title
+		margin-bottom 0
+
+		.section-title
+			text-align left
+
+	.arrow-scroll
+		position absolute
+		left 0
+		bottom 40px
+
+		display block
+		width 22px
+
+		svg
+			display block
+			width 100%
+			height 100%
+
+			transition opacity 0.3s $transitionAnimation
+
+			&:hover
+				opacity 0.4
+
+	.page-text
+		width 100%
+
+		p
+			font-size 26px
+
+	.section-container-image
+		position relative
+		width 100%
+		margin 0 auto
+
+		.section-container-image-item
+			position relative
+			overflow hidden
+
+			&--w80
+				display block
+				max-width 80%
+				width 100%
+
+			&--w70
+				display block
+				max-width 70%
+				width 100%
+
+			&--w65
+				display block
+				width 100%
+				max-width 65%
+
+			&--w55
+				display block
+				width 100%
+				max-width 55%
+
+			&--w50
+				display block
+				width 100%
+				max-width 50%
+
+			&--w45
+				display block
+				width 100%
+				max-width 45%
+
+			&--w40
+				display block
+				width 100%
+				max-width 40%
+
+			&--left
+				z-index 10
+				float left
+				margin-left 10%
+
+			&--right
+				float right
+				margin-top -120px
+				margin-right 10%
+
+			&--nomargin
+				margin-top 0
+
+			img
+				display block
+				width 100%
+				height 100%
+
+/** //general **/
+
+/** intro **/
+.intro
 
 	.page-text
 		h1
@@ -398,16 +789,7 @@ body
 			display block
 			width 100%
 			max-width 580px
-			line-height 68px
 
-		p
-			max-width 690px
-			width 100%
-
-/** //general **/
-
-/** intro **/
-.intro
 	.section-item
 		position relative
 
@@ -420,4 +802,261 @@ body
 		height 100px
 		max-width 230px
 
+.intro-video
+	.intro-video-container
+		position relative
+		display block
+		width 100%
+		height 100vh
+
+	.fake-preview
+		position absolute
+		top 0
+		right 0
+		bottom 0
+		left 0
+		display block
+		width 100%
+		height 100%
+		background-image url(../dummy/youtube/preview_youtube.png)
+		background-repeat no-repeat
+		background-size cover
+
+		transition opacity 0.3s $transitionAnimation
+
+		cursor pointer
+
+		z-index 10
+
+		&:after
+			content ""
+			position absolute
+			top 0
+			right 0
+			left 0
+			bottom 0
+			display block
+			width 100%
+			height 100%
+
+			background rgba(0, 0, 0, 0.7)
+
+			z-index 15
+
+		.fake-preview-icon
+			position absolute
+			top 50%
+			left 50%
+
+			display block
+			width 145px
+			height 85px
+			margin -72.5px 0 0 -42.5px
+
+			transition opacity 0.3s $transitionAnimation, transform 0.3s $transitionAnimation
+
+			z-index 20
+
+		&:hover
+			.fake-preview-icon
+				opacity 0.5
+				transform scale(0.9)
+
+		&.active
+			opacity 0
+			z-index -1
+
+.intro-quote
+	.intro-quote-text
+		margin-top 95%
+
+	.page-text
+		max-width 300px
+
+.intro-instagram
+	margin-top 220px
+
 /** //intro **/
+
+.intro-briefcases
+	.briefcases-container
+		width 100%
+
+.briefcases-container
+	.briefcases-item
+		position relative
+		padding 40px 30px 45px 30px
+		box-sizing border-box
+
+		margin-bottom 30px
+
+		&:before
+			content ""
+			position absolute
+			top 0
+			right 0
+			bottom 0
+			left 0
+
+			display block
+			width 100%
+			height 100%
+
+			background $colorLight
+
+			z-index -1
+
+		&:after
+			content ""
+			position absolute
+			right 35px
+			bottom 35px
+			display block
+			width 20px
+			height 30px
+
+			background url("../svg/send_arrow_right.svg")
+			background-repeat no-repeat
+			background-size contain
+
+			transition transform 0.3s $transitionAnimation
+
+		&:hover
+			&:after
+				transform translateX(10px)
+
+	.briefcases-result
+		display block
+		margin-bottom 80px
+		font-size 18px
+
+	.briefcases-dilimiter
+		color $colorSend
+
+	.briefcases-theme
+		max-width 70%
+		width 100%
+		line-height 44px
+		font-size 26px
+
+
+.instagram-container
+	.instagram-title
+		font-size 26px
+		margin-bottom 25px
+
+	.instagram-link
+		display block
+		margin-bottom 85px
+
+	.instagram-container-list
+		display flex
+		align-items center
+		justify-content flex-start
+		flex-wrap wrap
+
+		.instagram-container-item
+			position relative
+			width 100%
+			max-width 25%
+
+			overflow hidden
+
+			img
+				display block
+				width 100%
+
+			&:after
+				content ""
+				position absolute
+				top 0
+				right 0
+				left 0
+				bottom 0
+
+				display block
+				width 100%
+				height 100%
+
+				background rgba(247, 247, 247, 0.65)
+
+				opacity 0
+				transform skewX(20deg)
+				transition transform 0.3s $transitionAnimation, opacity 0.3s $transitionAnimation
+
+			&:hover
+				&:after
+					opacity 1
+					transform skewX(0)
+
+
+.section-doctors
+	padding-top 80px
+
+	.doctors-list
+		display flex
+		justify-content flex-start
+		align-items flex-start
+		flex-wrap wrap
+
+		.doctors-item
+			display block
+			width 30%
+			margin-right 5%
+			margin-bottom 120px
+
+			overflow hidden
+
+			&:nth-child(3n)
+				margin-right 0
+
+			&:last-child
+				margin-right 0
+
+			.doctors-holder
+				position relative
+				display block
+				width 100%
+				margin-bottom 40px
+				overflow hidden
+
+				img
+					display block
+					width 100%
+
+				&:after
+					content ""
+					position absolute
+					top 0
+					right 0
+					left 0
+					bottom 0
+
+					display block
+					width 120%
+					height 120%
+
+					background rgba(247, 247, 247, 0.65)
+
+					opacity 0
+					transform skewX(20deg)
+					transition transform 0.3s $transitionAnimation, opacity 0.3s $transitionAnimation
+
+					overflow hidden
+
+			.doctors-name
+				margin-bottom 20px
+				font-size 26px
+				transition color 0.3s $transitionAnimation
+
+			.doctors-prof
+				font-size 18px
+
+			&:hover
+				.doctors-name
+					color $colorSend
+
+				.doctors-holder
+					&:after
+						opacity 1
+						transform skewX(0)

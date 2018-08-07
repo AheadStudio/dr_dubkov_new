@@ -57,21 +57,75 @@ html(lang="ru", class="no-js", prefix="og:http://ogp.me/ns#")
 	body(itemscope, itemtype="http://schema.org/WebPage")
 
 		div(class="page")
+			div(class="page-menu")
+				+menu({
+					rootClass: "menu",
+					items: [
+						{
+							name: "О клинике",
+							href: "about.html",
+							linkClass: page.code == "about" ? "link link-dark active" : "link link-dark link-dark--color",
+							title: "",
+						}, {
+							name: "Врачи",
+							href: "doctors.html",
+							linkClass: page.code == "about" ? "link link-dark active" : "link link-dark link-dark--color",
+							title: "",
+						}, {
+							name: "Услуги",
+							href: "services.html",
+							linkClass: page.code == "about" ? "link link-dark active" : "link link-dark link-dark--color",
+							title: "",
+						}, {
+							name: "Кейсы",
+							href: "Cases.html",
+							linkClass: page.code == "about" ? "link link-dark active" : "link link-dark link-dark--color",
+							title: "",
+						}, {
+							name: "Отзывы",
+							href: "reviews.html",
+							linkClass: page.code == "about" ? "link link-dark active" : "link link-dark link-dark--color",
+							title: "",
+						}, {
+							name: "Контакты",
+							href: "contacts.html",
+							linkClass: page.code == "about" ? "link link-dark active" : "link link-dark link-dark--color",
+							title: "",
+						}
+					]
+				})
+				div(class="page-menu-info")
+					div(class="page-menu-address")		
+						a(href="#", class="link link-dark") Москва, пр. 40 лет Октября, 40, 
+						a(href="tel:+78001009100" class="link link-dark link-dark--color") +7 (495) 256-03-03
+					div(class="page-menu-creators")		
+						a(href="http://aheadstudio.ru", target="_blank," class="link link-dark page-menu-creators-link")
+							span(class="footer-creators-title") Сделано в 
+							span(class="footer-creators-name") Aheadstudio
+							
+				button(type="button", class="close-menu")
+					include ../../prod/svg/cross.svg
+
 			header(class="page-header", itemscope, itemtype="http://schema.org/WPHeader")
-				div(class="page-header-inner") 
-					div(class="header-title") Dr. Dubkov
-					div(class="header-burger-holder")
-						div(class="header-burger")
-					a(href="#" class="link link-dark header-record") Запись к врачу
-					
+					div(class="page-header-inner") 
+						div(class="header-title")
+							a(href="home.html" class="link header-title-icon")
+								include ../../prod/svg/logo_mini.svg
+						div(class="header-burger-holder")
+							div(class="header-burger")
+						a(href="#" class="link link-dark header-record") Запись к врачу
+															
 			main(class="page-content")
-				div(class="page-content-holder")
-					block content
+				div(class="page-content-block")
+					div(class="page-content-holder")
+						block content
+						a(href="tel:+78001009100" class="link link-dark link-opacity page-mobile") +7 (495) 256-03-03
 				
-				a(href="tel:+78001009100" class="link link-dark page-mobile") +7 (495) 256-03-03
 		+addJS([
 			{
 				src: "../js/jquery-3.2.1.min.js"
+			}, {
+				src: "https://www.youtube.com/iframe_api"
 			}, {
 				src: "../js/" + info.code + ".js"
 			}

@@ -26,6 +26,14 @@
         "home": {
             "name": "Главная",
             "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "doctors": {
+            "name": "Врачи",
+            "progress": {
                 "desktop": "0",
                 "tablet": "0",
                 "mobile": "0"
