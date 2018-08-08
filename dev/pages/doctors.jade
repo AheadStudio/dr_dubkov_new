@@ -3,22 +3,22 @@ extends ../templates/base
 block content
     div(class="section-doctors")
         div(class="section page-title")
-            div(class="section-item section-item--w25 section-item--left")
+            div(class="section-item section-item--w25 section-item--left section-item--left-10")
                 div(class="section-title")
-                    a(href="#", class="link link-dark section-title-item") Врачи
+                    div(class="link link-dark section-title-item") Врачи
                     
         div(class="section")
-            div(class="section-container-image")
-                div(class="section-container-image-item section-container-image-item--right section-container-image-item--nomargin section-container-image-item--w65")
-                    img(src="../dummy/doctors1.jpg", alt="")
+            div(class="section-item section-item--w65 section-item--right section-item--right-10")
+                div(class="section-holder")
+                    img(src="../dummy/doctors1.jpg", class="section-img")
                     
         div(class="section")
-            div(class="section-item section-item--w45 section-item--left")
+            div(class="section-item section-item--w50 section-item--left section-item--left-10")
                 div(class="page-text")
                     h1 Наша команда позволяет решать любые сложные задачи в стоматологии
                     
         div(class="section")
-            div(class="section-item section-item--w90 section-item--left")
+            div(class="section-item section-item--w90 section-item--left section-item--left-10")
                 div(class="doctors-list")
                     a(href="doctors-detail.html", class="link link-dark doctors-item")
                         div(class="doctors-holder")

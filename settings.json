@@ -34,7 +34,79 @@
         "doctors": {
             "name": "Врачи",
             "progress": {
-                "desktop": "0",
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "doctors-detail": {
+            "name": "Врач",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "services": {
+            "name": "Услуги",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "reviews": {
+            "name": "Отзывы",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "cases": {
+            "name": "Кейсы",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "cases-detail": {
+            "name": "Кейс детальная",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "about": {
+            "name": "О клинике",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "contacts": {
+            "name": "Контакты",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "form": {
+            "name": "Запись на прием",
+            "progress": {
+                "desktop": "100",
+                "tablet": "0",
+                "mobile": "0"
+            }
+        },
+        "form-result": {
+            "name": "Результат формы",
+            "progress": {
+                "desktop": "100",
                 "tablet": "0",
                 "mobile": "0"
             }

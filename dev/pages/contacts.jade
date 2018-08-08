@@ -1,0 +1,26 @@
+extends ../templates/base
+
+block content
+    div(class="section-contacts")
+        div(class="section section--height page-title")
+            div(class="section-item section-item--w25 section-item--left section-item--left-10")
+                div(class="section-title")
+                    div(class="link link-dark section-title-item") Контакты    
+                div(class="contacts-container")
+                    div(class="page-text")
+                        div(class="contacts-item")
+                            p
+                                a(href="yandexnavi://build_route_on_map?lat_to=37.74622455522533&amp;lon_to=39.73541935", class="link link-dark link-dark--bottom-reverse contacts-address") Москва
+                                    br
+                                    | пр. 40лет Октября, 40
+                            p
+                                a(href="tel:+74952560303", class="link link-dark link-dark--bottom-reverse contacts-email") info@dr-kurov.ru
+                            p
+                                a(href="mailto:info@sunsochi.com", class="link link-dark link-dark--color contacts-mobile") +7 (495) 256-03-03
+                        div(class="contacts-item")
+                            p
+                                a(href="https://www.instagram.com/dr.dubkov/", class="link link-dark link-dark--bottom-reverse contacts-instagram") @dr.dubkov
+                                
+            div(class="section-item section-item--w55 section-item--right")
+                div(class="map-container")
+                    div(id="map", class="map", data-lat="55.67175997", data-lng="37.7461579", data-zoom="18")

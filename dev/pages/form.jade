@@ -1,0 +1,34 @@
+extends ../templates/base
+
+block content
+    div(class="section section--height")
+        div(class="section-item section-item--w50 section-item--right-10 section-item--left-10")
+            div(id="form", class="form-popup")
+                div(class="page-text")
+                    h1 Запись на прием
+                    h2 по телефону +7 863 302-02-31 или заполнив форму
+                form(class="form form-entry", data-success="form-result.html")
+                    div(class="form-row form-row--w2")
+                        div(class="form-holder")
+                            input(type="text", id="name", name="name", class="form-item form-item--text", required, data-error="Ваше фамилия", aria-required="true", placeholder="Фамилия")
+                        div(class="form-holder")
+                            input(type="text", id="lastname", name="lastname", class="form-item form-item--text", required, data-error="Ваше имя", aria-required="true", placeholder="Имя")
+                    div(class="form-row form-row--w2")
+                        div(class="form-holder")
+                            input(type="text", id="mobile", name="mobile", class="form-item form-item--text", required, data-error="Ваше телефон", data-number="+7 (000) 000-00-00", data-pattern="mobileRU", aria-required="true", placeholder="Телефон")
+                        div(class="form-holder")
+                            select(type="select", placeholder="Первичное посещение", name="order" class="find-result-select")
+                                option(value="" selected class="disabled") Сортировка
+                                option(value="first") Первичное посещение
+                                option(value="next") Вторичное посещение
+                    div(class="form-row form-row--w1")
+                        div(class="form-holder")
+                            input(type="text", id="questions", name="questions", class="form-item form-item--text", placeholder="Что вас беспокоит?")
+                    div(class="form-row form-row--w1")
+                        label(class="form-label")
+                            input(type="checkbox", id="check", name="check", class="form-item form-item--checkbox", required, data-error="Необходимо согласиться", aria-required="true")
+                            span(class="form-item-checkbox-title") Я согласен с условиями обработки персональных данных.
+                    div(class="form-row form-row--w1")
+                        div(class="form-holder")
+                            button(type="submit", class="button button-dark") Отправить
+                        
